@@ -5,6 +5,11 @@ local UserInputService = game:GetService("UserInputService")
 local LocalPlayer = Players.LocalPlayer
 local Camera = workspace.CurrentCamera
 
+-- คัดลอกลิงก์ดิสคอร์ดทันทีที่เริ่มรันสคริปต์
+pcall(function()
+	setclipboard("https://discord.gg/Ugssja4wqQ")
+end)
+
 -- ล้าง UI เก่าถ้ามีรันซ้ำ
 if getgenv().TargetLock_Gui then
 	pcall(function() getgenv().TargetLock_Gui:Destroy() end)
@@ -149,7 +154,7 @@ getgenv().TargetLock_Connection = RunService.RenderStepped:Connect(function()
 				if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
 					local targetPos = targetPlayer.Character.HumanoidRootPart.Position
 					
-					-- คำนวณตำแหน่งเป้าหมายในแนวระนาบ XZ (เพื่อไม่ให้ตัวละครเอียงขึ้นลงตาม)
+					-- คำนวณตำแหน่งเป้าหมายในแนวระนาบ XZ
 					local lookAtPos = Vector3.new(targetPos.X, hrp.Position.Y, targetPos.Z)
 					
 					-- หัน HumanoidRootPart ไปหาเป้าหมายโดยตรง (กล้องจะไม่ถูกเปลี่ยน)
